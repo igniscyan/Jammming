@@ -20,7 +20,7 @@ export class App extends React.Component{
         "name": "cheese",
         "artist": "whiz",
         "album": "R gross",
-        "id": 5
+        "id": 6
       }],
       "playlistName": "poop-sock",
       "playlistTracks": [{
@@ -42,24 +42,23 @@ export class App extends React.Component{
   }
 
   addTrack(track) {
+    let res = this.state.playlistTracks;
     if (this.state.playlistTracks.find(savedTrack => savedTrack.id === track.id)) {
       return;
     }
-    let res = this.state.playlistTracks;
     res.push(track);
     this.setState({
       playlistTracks: res
     });
   }
+
   removeTrack(track) {
     let res = this.state.playlistTracks; 
-    res.filter(savedTrack => track.id !== savedTrack.id);
+    res = res.filter(savedTrack => track.id !== savedTrack.id);
     this.setState({
       playlistTracks: res
-      });
+    });
   }
-
-
 
   render() {
     return (
