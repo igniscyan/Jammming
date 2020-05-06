@@ -5,7 +5,7 @@ import {SearchResults} from '../SearchResults/SearchResults';
 import {Playlist} from '../Playlist/Playlist';
 
 
-export class App extends React.Component() {
+export class App extends React.Component{
   constructor(props) {
     super(props);
 
