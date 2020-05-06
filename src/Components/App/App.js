@@ -57,11 +57,9 @@ export class App extends React.Component{
 
   search(searchTerm) {
     console.log(searchTerm);
-    Spotify.search(searchTerm).then(searchResults => {
-      this.setState({
-        searchResults: searchResults
-      });
-    });
+    Spotify.search(searchTerm).then(res => this.setState({
+        searchResults: res
+    }));
   }
 
   render() {
@@ -72,7 +70,12 @@ export class App extends React.Component{
           <SearchBar onSearch={this.search} />
           <div className="App-playlist">
             <SearchResults onAdd={this.addTrack} searchResults={this.state.searchResults} />
-            <Playlist onNameChange = {this.updatePlaylistName} playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks} onRemove={this.removeTrack} onSave={this.savePlaylist}/>
+            <Playlist 
+              onNameChange = {this.updatePlaylistName} 
+              playlistName={this.state.playlistName} 
+              playlistTracks={this.state.playlistTracks} 
+              onRemove={this.removeTrack} 
+              onSave={this.savePlaylist} />
           </div>
         </div>
       </div>
