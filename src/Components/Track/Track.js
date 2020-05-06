@@ -8,9 +8,13 @@ export class Track extends React.Component {
 
         this.state = {}
 
-        //this.renderAction = this.renderAction.bind(this);
+        this.addTrack = this.addTrack.bind(this);
+        // this.renderAction = this.renderAction.bind(this);
     }
 
+    addTrack() {
+        this.props.onAdd(this.props.track);
+    }
 
     //double check the .bind() below if this isn't working...
     renderAction() {
@@ -18,7 +22,7 @@ export class Track extends React.Component {
             return <button className="Track-Action">-</button>
         }
         else {
-            return <button className="Track-Action">+</button>
+            return <button onClick={this.addTrack} className="Track-Action">+</button>
         }
     }
     
@@ -29,7 +33,7 @@ export class Track extends React.Component {
                     <h3>{this.props.track.name}</h3>
                     <p>{this.props.track.artist} | {this.props.track.album}</p>
                 </div>
-                {this.renderAction.bind(this)}
+                <button>{this.renderAction()}</button>
             </div>
         );
     }

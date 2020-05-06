@@ -10,8 +10,45 @@ export class App extends React.Component{
     super(props);
 
     this.state = {
-      "searchResults": []
+      "searchResults": [{
+        "name": "bum",
+        "artist": "fuckers",
+        "album": "R Us",
+        "id": 4
+      },
+      {
+        "name": "cheese",
+        "artist": "whiz",
+        "album": "R gross",
+        "id": 5
+      }],
+      "playlistName": "poop-sock",
+      "playlistTracks": [{
+        "name": "bum",
+        "artist": "fuckers",
+        "album": "R Us",
+        "id": 4
+      },
+      {
+        "name": "cheese",
+        "artist": "whiz",
+        "album": "R gross",
+        "id": 5
+      }]
     }
+
+    this.addTrack = this.addTrack.bind(this);
+  }
+
+  addTrack(track) {
+    if (this.state.playlistTracks.find(savedTrack => savedTrack.id === track.id)) {
+      return;
+    }
+    let res = this.state.playlistTracks;
+    res.push(track);
+    this.setState({
+      playlistTracks: res
+    });
   }
 
   render() {
@@ -21,8 +58,8 @@ export class App extends React.Component{
         <div className="App">
           <SearchBar />
           <div className="App-playlist">
-            <SearchResults searchResults={this.state.searchResults} />
-            <Playlist />
+            <SearchResults onAdd={this.addTrack} searchResults={this.state.searchResults} />
+            <Playlist playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks} />
           </div>
         </div>
       </div>
