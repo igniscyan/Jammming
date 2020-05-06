@@ -53,7 +53,7 @@ export class App extends React.Component{
   }
   removeTrack(track) {
     let res = this.state.playlistTracks; 
-    res.filter(savedTrack => track.id != savedTrack.id);
+    res.filter(savedTrack => track.id !== savedTrack.id);
     this.setState({
       playlistTracks: res
       });
