@@ -9,6 +9,7 @@ export class Track extends React.Component {
         this.state = {}
 
         this.addTrack = this.addTrack.bind(this);
+        this.removeTrack = this.removeTrack.bind(this);
         // this.renderAction = this.renderAction.bind(this);
     }
 
@@ -16,13 +17,17 @@ export class Track extends React.Component {
         this.props.onAdd(this.props.track);
     }
 
+    removeTrack() {
+        this.props.onRemove(this.props.track);
+    }
+
     //double check the .bind() below if this isn't working...
     renderAction() {
         if(this.props.isRemoval) {
-            return <button className="Track-Action">-</button>
+            return <button className="Track-action" onClick={this.removeTrack}>-</button>
         }
         else {
-            return <button onClick={this.addTrack} className="Track-Action">+</button>
+            return <button onClick={this.addTrack} className="Track-action">+</button>
         }
     }
     
@@ -33,7 +38,7 @@ export class Track extends React.Component {
                     <h3>{this.props.track.name}</h3>
                     <p>{this.props.track.artist} | {this.props.track.album}</p>
                 </div>
-                <button>{this.renderAction()}</button>
+                {this.renderAction()}
             </div>
         );
     }
