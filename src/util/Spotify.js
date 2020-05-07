@@ -1,5 +1,5 @@
 const clientID = "a86855ab357048c484d31496f0ad21b2";
-const redirectURI = "http://localhost:3000/";
+const redirectURI = "http://jamshapiro.surge.sh";
 
 let accessToken;
 let expiresIn;
